@@ -4,6 +4,7 @@ var express = require("express"),
     bodyParser = require("body-parser"),
     mongoose    = require("mongoose"),
     passport    = require("passport"),
+    path = require("path")
     LocalStrategy = require("passport-local"),
 	 cookieParser = require("cookie-parser"),
    bcrypt = require("bcryptjs"),
@@ -18,7 +19,7 @@ mongoose.connect(process.env.MONGO_URL, { useUnifiedTopology: true }
       .catch(err => console.log(`Database connection error: ${err.message}`));
 
 app.use(bodyParser.urlencoded({extended: true}));
-pp.set("view engine", "ejs");
+app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'views'));;
 app.use(methodOverride('_method'));
